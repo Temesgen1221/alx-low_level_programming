@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 /**
-* main - a function to run a random number
+* main - naming positive , negative
 *
 * Return: 0 (success)
 *
