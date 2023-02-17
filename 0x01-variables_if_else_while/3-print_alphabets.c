@@ -5,14 +5,14 @@
 *Return: Always 0 (success)
 */
 
- int main(void)
+int main(void)
 {
-	char chLower = 'a';
-	char chUpper = 'A';
+char chLower = 'a';
+char chUpper = 'A';
 
-	for (chLower = 'a'; chLower <= 'z'; chLower++)
+for (chLower = 'a'; chLower <= 'z'; chLower++)
 {
-	putchar(chLower);
+putchar(chLower);
 }
 for (chUpper = 'A'; chUpper <= 'Z'; chUpper++)
 {
