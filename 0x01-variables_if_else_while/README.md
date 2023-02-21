@@ -1,1 +1,1 @@
-a programm prints the integer property
+some code printing c-pro
