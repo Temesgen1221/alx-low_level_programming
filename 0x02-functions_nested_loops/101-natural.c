@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "main.h"
 /**
 * main - print the sum of all multiples of 3 up to 1024
 * Return: Always 0 (Success)
