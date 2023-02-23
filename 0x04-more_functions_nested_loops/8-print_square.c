@@ -12,12 +12,11 @@ int i, j;
 
 if (size <= 0)
 {
-_putchar('\n');
+putchar('\n');
 }
 else
 {
 for (i = 0; i < size; i++)
-}
 {
 for (j = 0; j < size; j++)
 {
