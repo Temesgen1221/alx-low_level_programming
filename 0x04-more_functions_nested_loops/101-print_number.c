@@ -2,10 +2,10 @@
 #include <stdio.h>
 
 /**
- * print_number - Prints an integer
- * @n: integer value to print
- * Return: empty
- */
+* print_number - Prints an integer
+* @n: integer value to print
+* Return: empty
+*/
 
 void print_number(int n)
 {
