@@ -5,14 +5,13 @@
 * @size: number of squares
 * Return: empty
 */
-
 void print_square(int size)
 {
 int i, j;
 
 if (size <= 0)
 {
-putchar('\n');
+_putchar('\n');
 }
 else
 {
