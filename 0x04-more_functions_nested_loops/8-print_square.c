@@ -5,6 +5,7 @@
 * @size: number of squares
 * Return: empty
 */
+
 void print_square(int size)
 {
 int i, j;
@@ -16,8 +17,6 @@ _putchar('\n');
 else
 {
 for (i = 0; i < size; i++)
-{
-_putchar(35);
 }
 {
 for (j = 0; j < size; j++)
