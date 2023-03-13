@@ -1,65 +1,77 @@
-#include "main.h"
 #include <stdlib.h>
-#include <stddef.h>
-
-int _strlen(char *str);
+#include <stdio.h>
+#include "main.h"
 
 /**
- * argstostr - allocates memory to a concatenation all arguments to a program
- *	with \n between each argument
- * @ac: number of arguments
- * @av: array of string arguments
- *
- * Return: the pointer to new string, NULL if failure or ac == 0 or av == NULL
- */
-char *argstostr(int ac, char **av)
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
+ * Return: number of words
+*/
+
+int count_word(char *s)
+
 {
-int i, j, k = 0, totalStrLen = 0;
-char *ptr;
+int con, x, y;
 
-if (ac == 0 || av == NULL)
+con = 0;
+y = 0;
+
+for (x = 0; s[x] != '\0'; x++)
 {
-return (NULL);
-}
-
-for (i = 0; i < ac; i++)
-
-totalStrLen += _strlen(av[i]) + 1;
-}
-
-ptr = malloc(sizeof(char) * totalStrLen + 1);
-
-if (ptr == NULL)
+if (s[x] == ' ')
+con = 0;
+else if (con == 0)
 {
-return (NULL);
+con = 1;
+y++;
 }
-
-for (i = 0; i < ac; i++, k++)
-{
-for (j = 0; j < _strlen(av[i]); j++, k++)
-{
-ptr[k] = av[i][j];
 }
-ptr[k] = '\n'; /* add '\n' after each argument */
-}
-
-ptr[k] = '\0';
-
-return (ptr);
+return (y);
 }
 
 /**
- * _strlen - calculated the length of string str
- * @str: the string that the length will be calculated
+ * **strtow - splits a string into words
+ * @str: string to split
  *
- * Return: the length of the string str
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
  */
-int _strlen(char *str)
+
+char **strtow(char *str)
+
 {
-int i;
+char **box, *tmp;
+int i, k = 0, len = 0, words, c = 0, start, end;
 
-for (i = 0; str[i] != '\0'; i++)
-;
-
-return (i);
+while (*(str + len))
+len++;
+words = count_word(str);
+if (words == 0)
+return (NULL);
+box = (char **) malloc(sizeof(char *) * (words + 1));
+if (box == NULL)
+return (NULL);
+for (i = 0; i <= len; i++)
+{
+if (str[i] == ' ' || str[i] == '\0')
+{
+if (c)
+{
+end = i;
+tmp = (char *) malloc(sizeof(char) * (c + 1));
+if (tmp == NULL)
+return (NULL);
+while (start < end)
+*tmp++ = str[start++];
+*tmp = '\0';
+box[k] = tmp - c;
+k++;
+c = 0;
+}
+}
+else if (c++ == 0)
+start = i;
+}
+box[k] = NULL;
+return (box);
 }
