@@ -2,64 +2,62 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-int _strlen(char *str);
+unsigned int _strlen(char *str);
 
 /**
-* argstostr - allocates memory to a concatenation all arguments to a program
-* with \n between each argument
-* @ac: number of arguments
-* @av: array of string arguments
+* str_concat - creates a memory space where it concatenates two strings
+* @s1: string one to be concatenated with string s2
+* @s2: string two to be concatenated with string s1
 *
-* Return: the pointer to new string, NULL if failure or ac == 0 or av == NULL
+* Return: the pointer to the newly allocated memory space, NULL if failure
 */
-char *argstostr(int ac, char **av)
+char *str_concat(char *s1, char *s2)
 {
-        int i, j, k = 0, totalStrLen = 0;
-        char *ptr;
+unsigned int i, j, len_s1, len_s2;
+char *ptr;
 
-        if (ac == 0 || av == NULL)
-        {
-                return (NULL);
-        }
+len_s1 = _strlen(s1);
+len_s2 = _strlen(s2);
 
-        for (i = 0; i < ac; i++)
-        { /* calculate length of all arguments +1 for '\n' after each arg */
-                totalStrLen += _strlen(av[i]) + 1;
-        }
+ptr = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+if (ptr == NULL)
+{
+return (NULL);
+}
 
-        ptr = malloc(sizeof(char) * totalStrLen + 1);
-        /* +1 for final null teminator */
-        if (ptr == NULL)
-        {
-                return (NULL);
-        }
+for (i = 0, j = 0; j < len_s1; i++, j++)
+{
+ptr[i] = s1[j];
+}
 
-        for (i = 0; i < ac; i++, k++)
-        {
-                for (j = 0; j < _strlen(av[i]); j++, k++)
-                {
-                        ptr[k] = av[i][j];
-                }
-                ptr[k] = '\n'; /* add '\n' after each argument */
-        }
+for (j = 0; j < len_s2; i++, j++)
+{
+ptr[i] = s2[j];
+}
 
-        ptr[k] = '\0';
+ptr[i] = '\0';
 
-        return (ptr);
+return (ptr);
 }
 
 /**
-* _strlen - calculated the length of string str
-* @str: the string that the length will be calculated
+* _strlen - calculates the length of string str
+* @str: string that the length will be calculated
 *
-* Return: the length of the string str
+* Return: the length of string str
 */
-int _strlen(char *str)
+unsigned int _strlen(char *str)
 {
-        int i;
+unsigned int i;
 
-        for (i = 0; str[i] != '\0'; i++)
-                ;
+if (str == NULL)
+{
+return (0);
+}
 
-        return (i);
+for (i = 0; str[i] != '\0'; i++)
+;
+
+	
+return (i);
 }
