@@ -1,4 +1,3 @@
-#include <main.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -38,4 +37,3 @@ char *argstostr(int ac, char **av)
 	}
 	return (str);
 }
-
